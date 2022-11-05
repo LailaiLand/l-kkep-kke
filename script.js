@@ -1,3 +1,4 @@
+//model
 let page = document.getElementById('loopy');
 let lister = ''
 let tekst;
@@ -17,7 +18,7 @@ let kortResult = '';
 let trekk1 = '';
 let trekk2 = '';
 
-
+//view
 startPage();
 function startPage(slett) {
     if (slett == 'slett') sletter();
@@ -70,7 +71,7 @@ function krigPage() {
     `;
 }
 
-
+//controller
 function toGangLoop() {
     for (let count = 2; count < 21; count = count + 2) {
         lister += '<li>' + count + '</li>';
