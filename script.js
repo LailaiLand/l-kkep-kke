@@ -137,8 +137,8 @@ function sletter(page) {
     vokalAntall = 0;
     reversTekst = '';
     kortResult = '';
-    let trekk1 = '';
-    let trekk2 = '';
+    trekk1 = '';
+    trekk2 = '';
 
     if (page == 'reverse') textReverserPage();
     if (page == 'toGang') toGangPage();
