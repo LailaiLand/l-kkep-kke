@@ -1,6 +1,6 @@
 let page = document.getElementById('loopy');
 let lister = ''
-let tekst; 
+let tekst;
 let aTeller = 0;
 let eTeller = 0;
 let iTeller = 0;
@@ -14,9 +14,12 @@ let reversTekst = '';
 let kort1 = 0;
 let kort2 = 0;
 let kortResult = '';
+let trekk1 = '';
+let trekk2 = '';
+
 
 startPage();
-function startPage(slett){
+function startPage(slett) {
     if (slett == 'slett') sletter();
     page.innerHTML = `
     <button onclick="toGangPage()">start 2ganger'n</button>
@@ -26,7 +29,7 @@ function startPage(slett){
 
     `;
 }
-function toGangPage(){
+function toGangPage() {
     page.innerHTML = `
     <button onclick="startPage('slett')">tilbake til valg</button>
     <p>trykk knappen under for å vise 2gangern</p>
@@ -35,7 +38,7 @@ function toGangPage(){
     <ul> ${lister} </ul>
     `;
 }
-function vokalTellerPage(){
+function vokalTellerPage() {
     page.innerHTML = `
     <button onclick="startPage('nullstill')">tilbake til valg</button>
     <p>Skriv noe i boksen under<br>kun små bokstaver fordi jeg er lat</p>
@@ -44,9 +47,9 @@ function vokalTellerPage(){
     <button onclick="sletter('vokal')">fjern tekst</button>
     <p>det er ${vokalAntall} vokaler </p>
     `;
-    
+
 }
-function textReverserPage(){
+function textReverserPage() {
     page.innerHTML = `
     <button onclick="startPage('nullstill')">tilbake til valg</button>
     <p>Skriv noe i boksen under</p>
@@ -56,25 +59,26 @@ function textReverserPage(){
     <button onclick="sletter('reverse')">fjern tekst</button>
     `;
 }
-function krigPage(){
+function krigPage() {
     page.innerHTML = `
     <button onclick="startPage('nullstill')">tilbake til valg</button>
     <p>trykk på knappen for å starte krig.<br>se så for deg hvor kult det hadde vært,<br>om jeg hadde giddi å legge til bilder av kortstokk</p>
     <button onclick="krigLoop()">krig!</button> 
+    <div style="display: flex; flex-direction: row;"> <ul> ${trekk1} </ul><ul> ${trekk2} </ul> </div>
     <p>${kortResult}</p>
     <button onclick="sletter('kort')">fjern tekst</button>
     `;
 }
 
 
-function toGangLoop(){
+function toGangLoop() {
     for (let count = 2; count < 21; count = count + 2) {
         lister += '<li>' + count + '</li>';
         console.log(count);
     }
     toGangPage();
 }
-function vokalTellerLoop(){
+function vokalTellerLoop() {
     tekst = document.getElementById('tekstboks').value;
     for (let i = 0; i < tekst.length; i++) {
         if (tekst.charAt(i) == 'a') aTeller++
@@ -85,40 +89,42 @@ function vokalTellerLoop(){
         if (tekst.charAt(i) == 'æ') æTeller++
         if (tekst.charAt(i) == 'ø') øTeller++
         if (tekst.charAt(i) == 'å') åTeller++
-        
+
     }
     vokalAntall = aTeller +
-                eTeller +
-                iTeller +
-                oTeller +
-                uTeller +
-                æTeller +
-                øTeller +
-                åTeller;
+        eTeller +
+        iTeller +
+        oTeller +
+        uTeller +
+        æTeller +
+        øTeller +
+        åTeller;
     console.log(tekst);
     vokalTellerPage();
 }
-function textReverserLoop(){
+function textReverserLoop() {
     tekst = document.getElementById('tekstboks').value;
     for (let i = tekst.length; i >= 0; i--) {
         reversTekst = reversTekst + tekst.charAt(i);
-        
+
     }
     textReverserPage();
 }
-function krigLoop(){
+function krigLoop() {
     kort1 = 1;
     kort2 = 2;
-    while(kort1 !== kort2){
+    while (kort1 !== kort2) {
         kort1 = Math.floor(Math.random() * 14) + 1;
         kort2 = Math.floor(Math.random() * 14) + 1;
+        trekk1 += '<li>' + kort1 + '</li>' 
+        trekk2 += '<li>' + kort2 + '</li>' 
     }
     kortResult = kort1 + 'Equal numbers found' + kort2;
     krigPage();
 
 }
 
-function sletter(page){
+function sletter(page) {
     lister = '';
     aTeller = 0;
     eTeller = 0;
@@ -129,9 +135,11 @@ function sletter(page){
     øTeller = 0;
     åTeller = 0;
     vokalAntall = 0;
-    reversTekst  = '';
+    reversTekst = '';
     kortResult = '';
-    
+    let trekk1 = '';
+    let trekk2 = '';
+
     if (page == 'reverse') textReverserPage();
     if (page == 'toGang') toGangPage();
     if (page == 'vokal') vokalTellerPage();
