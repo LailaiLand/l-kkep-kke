@@ -41,7 +41,7 @@ function toGangPage() {
 }
 function vokalTellerPage() {
     page.innerHTML = `
-    <button onclick="startPage('nullstill')">tilbake til valg</button>
+    <button onclick="startPage('slett')">tilbake til valg</button>
     <p>Skriv noe i boksen under<br>kun små bokstaver fordi jeg er lat</p>
     <input type:"text" id="tekstboks">
     <button onclick="vokalTellerLoop()">tell vokaler </button>
@@ -52,7 +52,7 @@ function vokalTellerPage() {
 }
 function textReverserPage() {
     page.innerHTML = `
-    <button onclick="startPage('nullstill')">tilbake til valg</button>
+    <button onclick="startPage('slett')">tilbake til valg</button>
     <p>Skriv noe i boksen under</p>
     <input type:"text" id="tekstboks">
     <button onclick="textReverserLoop()">reverser tekst </button>
@@ -62,7 +62,7 @@ function textReverserPage() {
 }
 function krigPage() {
     page.innerHTML = `
-    <button onclick="startPage('nullstill')">tilbake til valg</button>
+    <button onclick="startPage('slett')">tilbake til valg</button>
     <p>trykk på knappen for å starte krig.<br>se så for deg hvor kult det hadde vært,<br>om jeg hadde giddi å legge til bilder av kortstokk</p>
     <button onclick="krigLoop()">krig!</button> 
     <div style="display: flex; flex-direction: row;"> <ul> ${trekk1} </ul><ul> ${trekk2} </ul> </div>
